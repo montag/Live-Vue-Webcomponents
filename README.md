@@ -76,7 +76,7 @@ To block mouse clicks from triggering the wrapper before it's ready to send data
 I suspect that there are some interactive widgets, especially for interactive forms, where it makes more sense to build that functionality as an encapsulated web component rather than orchestrate that much interactivity from the serverside. But I dont know if that's accurate. For this I just wanted to see if it was possible. 
 
 ### Additional note
-Much of the complexity in this wrapper is due to the wrapper listening for click events and element.value. If it let you specify custom events e.g. phoenix-custom-myevent and looked in that event.details for the value payload. These web components would look much more like normal components e.g. bind to props and emit custom events without having to suppress clicks, attach to value, or redispatch click events. 
+Much of the complexity in this wrapper is due to the wrapper listening for click events and element.value. If it let you specify custom events e.g. phoenix-custom-myevent="phoenixevent and looked in that event.details for the value payload, then these web components would look much more like normal components e.g. bind to props and $emit custom event payloads without having to suppress clicks, attach to value, or redispatch click events. 
 
 
 
