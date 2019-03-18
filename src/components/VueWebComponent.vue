@@ -28,8 +28,11 @@ export default {
   methods: {
     async handleClick(event) {
       const host = this.$el.getRootNode().host
+      // random is created once to demonstrate that this instance hasnt been reinitialized.
       host.setAttribute('value', this.random)
+      // wait for the vdom
       await this.$nextTick()
+      // emit a custom event (via vue)
       this.$emit('click', event)
     }
   }

@@ -31,7 +31,8 @@
   },
 
   async mounted() {
-    // This prevents mouse clicks from triggering the phoenix-live listener until we actually want to send data.
+    // This prevents mouse clicks from triggering the phoenix-live
+    // listener until we actually want to send data.
     await this.$nextTick()
     const host = this.$el.getRootNode().host
     host.addEventListener('click', e => {
@@ -42,11 +43,17 @@
   },
 
   methods: {
+    // This sets the value we want to send as an attribute on the
+    // shadowdom host element which is what the liveview wrapper is
+    // listening on.
     async handleChange(val, _, dateRef) {
       const host = this.$el.getRootNode().host
       const date = dateRef.latestSelectedDateObj.toUTCString()
       host.setAttribute('value', date)
+      // wait for the vdom
       await this.$nextTick()
+      // mimic the click as a custom event. the payload is ignore
+      // and could be empty.
       const newEvent = new CustomEvent('click', {
         bubbles: true,
         detail: { event }
