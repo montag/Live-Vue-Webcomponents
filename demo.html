@@ -1,0 +1,13 @@
+<meta charset="utf-8">
+<title>my-custom-element demo</title>
+<script src="https://unpkg.com/vue"></script>
+<script src="./dist/my-custom-element.js"></script>
+
+
+<my-custom-element msg="test"></my-custom-element>
+
+<script>
+    let elem = document.querySelector('my-custom-element')
+    elem.addEventListener('click', e => console.log('e:click', e, e.value))
+</script>
+
